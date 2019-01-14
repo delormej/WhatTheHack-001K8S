@@ -30,7 +30,7 @@ metadata:
   labels:
     app: content-web
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - port: 3000
     targetPort: 3000
