@@ -15,6 +15,22 @@ spec:
         app: content-api
     spec:
       containers:
-        - image: wthacr.azurecr.io/content-api:v1
-          name: content-api
-
+        - name: content-api
+          image: wthacr.azurecr.io/content-api:v1
+          ports:
+          - containerPort: 3001
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: content-api
+  labels:
+    app: content-api
+spec:
+  type: ClusterIP
+  ports:
+  - port: 3001
+    targetPort: 3001
+    protocol: TCP
+  selector:
+    app: content-api
