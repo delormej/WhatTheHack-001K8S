@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: content-init
+spec:
+  template:
+    spec:
+      containers:
+      - name: content-init
+        image: wthacr.azurecr.io/content-init:v1
+        env:
+        - name: MONGODB_CONNECTION
+          value: mongodb://mongo:27017/contentdb
+      restartPolicy: Never
